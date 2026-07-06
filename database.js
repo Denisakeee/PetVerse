@@ -1,10 +1,11 @@
 const mysql = require("mysql2/promise");
 
 const db = mysql.createPool({
-    host: "localhost",
-    user: "root",
-    password: "", // Dacă ai parolă în XAMPP, pune-o aici
-    database: "petverse",
+    host: process.env.DB_HOST,
+    port: Number(process.env.DB_PORT),
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
 
     waitForConnections: true,
     connectionLimit: 10,
